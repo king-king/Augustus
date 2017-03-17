@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>load测试</title>
+    <style>
+        img {
+            width: 100px;
+        }
+    </style>
+    <script>
+        function post(data) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/loadData");
+            xhr.setRequestHeader("Content-type", "application/json ");
+
+            //            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send(data);
+        }
+        //        //        post(performance.timing);
+        //        //        console.log(performance.timing);
+        //        document.onreadystatechange = function () {
+        //            switch (document.readyState) {
+        //                case "loading":
+        //                    break;
+        //                case "interactive":
+        //                    break;
+        //                case "complete":
+        ////                    post(performance.timing);
+        //                    break;
+        //            }
+        //        };
+        window.onerror = function () {
+            post('{"message": "error"}');
+        };
+    </script>
+</head>
+<body>
+<img src="images/img0.jpg">
+<img src="images/img1.jpg">
+<img src="images/img2.jpg">
+<img src="images/img3.jpg">
+<script>
+    //    post(performance.timing);
+    //    document.body.onload = function () {
+    //        var t = new Date();
+    //        for (var i = 0; i < 100000000; i++) {
+    //
+    //        }
+    //        console.log(new Date() - t);
+    //        setTimeout(function () {
+    //            post(performance.timing);
+    //        }, 0);
+    //    }
+    var a;
+    var b = a.c / 20;
+</script>
+</body>
+</html>
