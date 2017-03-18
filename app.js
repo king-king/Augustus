@@ -22,9 +22,13 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/loadData", function (req, res, next) {
-    console.log(req.body);
-    res.send({code: 200});
+app.post("/loadData", function (req, res, next) {
+    console.log("0");
+    next();
+    // res.send({code: 200});
+}, function (req, res, next) {
+    console.log("1");
+    next();
 });
 
 app.use('/', index);
