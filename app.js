@@ -20,19 +20,22 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser());
+
+var n = 0;
+app.use("/images/", function (req, res, next) {
+    console.log(req.get("Referer"));
+    next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.post("/loadData", function (req, res, next) {
-    console.log("0");
-    next();
-    // res.send({code: 200});
-}, function (req, res, next) {
-    console.log("1");
-    next();
+    res.send({code: 200});
 });
 
 app.use('/', index);
 app.use('/users', users);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -40,6 +43,7 @@ app.use(function (req, res, next) {
     err.status = 404;
     next(err);
 });
+
 
 // error handler
 app.use(function (err, req, res, next) {
