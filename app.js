@@ -4,11 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var fs = require("fs");
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+// app.listen(3000);
+
+var fd = fs.openSync("./logs/" + process.pid + ".log", "a+");
+fs.closeSync(fd);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +28,8 @@ app.use(cookieParser());
 
 var n = 0;
 app.use("/images/", function (req, res, next) {
-    console.log(req.get("Referer"));
+    // console.log(req.get("Referer"));
+    console.log(process.pid);
     next();
 });
 
