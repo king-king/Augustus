@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            width: 100px;
+            display: none;
+        }
+    </style>
+    <script>
+        function staticOnload(str) {
+//            console.log(str)
+        }
+        var tt0 = performance.timing.loadEventEnd;
+
+        var t0, t1, t2;
+        document.onreadystatechange = function () {
+//            switch (document.readyState) {
+//                case "loading":
+//                    console.log("document.loading");
+//                    break;
+//                case "interactive":
+//                    t0 = new Date().getTime();
+//                    console.log("document.interactive : " + t0);
+//                    break;
+//                case "complete":
+//                    t1 = new Date().getTime();
+//                    console.log("document.complete : " + (t1 - t0));
+//                    break;
+//            }
+        };
+        console.log(tt0);
+    </script>
+</head>
+<body>
+<img src="img0.jpg" onload="staticOnload('img0 load')">
+<img src="img1.jpg" onload="staticOnload('img1 load')">
+<img src="img2.jpg" onload="staticOnload('img2 load')">
+<img src="img3.jpg" onload="staticOnload('img3 load')">
+<script src="test0.js" onload="staticOnload('script0 load')"></script>
+<script src="test1.js" onload="staticOnload('script1 load')"></script>
+<script>
+    //    console.log(window.performance.timing);
+    //    console.log(window.performance.timing.loadEventEnd - performance.timing.loadEventStart);
+    document.body.onload = function () {
+        t2 = new Date().getTime();
+//        console.log("body.onload : " + (t2 - t1));
+    };
+
+    var tt1 = performance.timing.loadEventEnd;
+    console.log(tt1, performance.timing);
+
+</script>
+</body>
+</html>
