@@ -38,6 +38,7 @@ function queue(task, callback) {
 function write(src, content, callback) {
     fs.writeFile(src, JSON.stringify(content) + "\n", {flag: "a"}, callback);
 }
+
 module.exports.loop = loop;
 module.exports.loopArray = loopArray;
 module.exports.queue = queue;
