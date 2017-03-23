@@ -14,13 +14,23 @@ var src = "../logs/out.log";
 var stream = fs.createWriteStream(src, {
     flags: 'a'
 });
+//
+// t.loop(5000000, function (i) {
+//     stream.write(JSON.stringify({
+//             index: i
+//         }) + "\n");
+// });
 
-t.loop(5000000, function (i) {
+var i = 0;
+t.timer(20 * 1000, function () {
     stream.write(JSON.stringify({
-            index: i
+            index: i++
         }) + "\n");
-});
+}, function () {
+    console.log("write end");
+}, 1000);
 
+console.log("code end " + (Date.now() - t0));
 
 process.on("exit", function () {
     console.log(Date.now() - t0);

@@ -39,7 +39,24 @@ function write(src, content, callback) {
     fs.writeFile(src, JSON.stringify(content) + "\n", {flag: "a"}, callback);
 }
 
+function timer(duration, func, callback, delay0) {
+    var t0 = Date.now();
+    var delay = delay0 || 100;
+
+    function d() {
+        func();
+        if (Date.now() - t0 < duration) {
+            return setTimeout(d, delay);
+        } else {
+            return callback();
+        }
+    }
+
+    d();
+}
+
 module.exports.loop = loop;
 module.exports.loopArray = loopArray;
 module.exports.queue = queue;
 module.exports.write = write;
+module.exports.timer = timer;
