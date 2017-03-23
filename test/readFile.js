@@ -32,6 +32,6 @@ timer(1000 * 60, function () {
     });
 }, function () {
     console.log("结束读文件");
-});
+}, 20);
 
 
