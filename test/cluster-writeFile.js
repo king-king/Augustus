@@ -15,10 +15,10 @@ var w = writer.writer(src);
 t.loop(1000000, function (i) {
     w.write("{index: " + i + ", name: 'wangqun'}");
 });
-w.close();
 var codet = Date.now() - t0;
 
 process.on("exit", function () {
+    w.close();
     console.log(pid + " exit： " + (Date.now() - t0) + "ms  code spend：" + codet + "ms");
 });
 
