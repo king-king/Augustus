@@ -8,7 +8,7 @@ var fs = require("fs");
 //
 var t0 = Date.now();
 // var src = "../logs/" + Date.now() + ".log";
-var src = "../logs/out.log";
+var src = "e:/out.log";
 
 
 var stream = fs.createWriteStream(src, {
@@ -24,9 +24,9 @@ function writer(src) {
     var status = true;
     var count = 0;
     return {
-        write: function (obj) {
+        write: function (string) {
             count++;
-            var str = JSON.stringify(obj) + "\n";
+            var str = string + "\n";
             if (status) {
                 status = stream.write(str, "utf-8");
                 if (!status) {
@@ -39,6 +39,10 @@ function writer(src) {
             } else {
                 bufferString += str;
             }
+        },
+        close: function () {
+            stream.end();
+            stream = bufferString = status = count = null;
         }
     };
 }
@@ -46,8 +50,14 @@ function writer(src) {
 //
 var w = writer(src);
 t.loop(1000000, function (i) {
-    w.write({index: i, name: "wangqun"});
+    w.write("{index: " + i + ", name: 'wangqun'}");
 });
+
+// t.loop(1000000, function (i) {
+//     stream.write(JSON.stringify({
+//             index: i++, name: "wangqun"
+//         }) + "\n");
+// });
 
 // var i = 0;
 // t.timer(30 * 1000, function () {
@@ -61,6 +71,7 @@ t.loop(1000000, function (i) {
 console.log("code end " + (Date.now() - t0));
 
 process.on("exit", function () {
+    w.close();
     console.log(Date.now() - t0);
 });
 
