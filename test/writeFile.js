@@ -14,21 +14,39 @@ var src = "../logs/out.log";
 var stream = fs.createWriteStream(src, {
     flags: 'a'
 });
-//
-stream.cork();
-t.loop(1000000, function (i) {
-    setTimeout(function () {
-        stream.write(JSON.stringify({
-                index: i
-            }) + "\n", "utf-8");
-        if (i && i % 1000 === 0) {
-            process.nextTick(function () {
-                stream.uncork();
-                stream.cork();
-            });
 
+function writer(src) {
+    // 仅处理utf-8的字符串
+    var stream = fs.createWriteStream(src, {
+        flags: 'a'
+    });
+    var bufferString = "";
+    var status = true;
+    var count = 0;
+    return {
+        write: function (obj) {
+            count++;
+            var str = JSON.stringify(obj) + "\n";
+            if (status) {
+                status = stream.write(str, "utf-8");
+                if (!status) {
+                    // 写满了，后续内容加到bufferString中,直到drain事件被触发
+                    stream.once("drain", function () {
+                        status = stream.write(bufferString, "utf-8");
+                        bufferString = "";
+                    });
+                }
+            } else {
+                bufferString += str;
+            }
         }
-    }, 0);
+    };
+}
+
+//
+var w = writer(src);
+t.loop(1000000, function (i) {
+    w.write({index: i, name: "wangqun"});
 });
 
 // var i = 0;

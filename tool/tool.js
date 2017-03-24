@@ -5,7 +5,9 @@ var fs = require("fs");
 
 function loop(n, func) {
     for (var i = 0; i < n; i++) {
-        func(i);
+        if (func(i)) {
+            break;
+        }
     }
 }
 function loopArray(arr, callback) {
