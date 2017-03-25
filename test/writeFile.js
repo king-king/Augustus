@@ -5,25 +5,23 @@
 
 var t = require("../lib/tool");
 var fs = require("fs");
-var writer = require("../lib/file");
+var writer = require("../lib/file").writer;
+
 var t0 = Date.now();
 // var src = "../logs/" + Date.now() + ".log";
 var src = "e:/LOGS/out.log";
 
 var stream = fs.createWriteStream(src, {flags: 'a'});
 
-stream.on("open", function () {
-    console.log("open " + stream.bytesWritten)
-});
-t.loop(1, function (i) {
+t.loop(1000000, function (i) {
     stream.write("{\"index\":" + i + "}" + "\r\n");
 });
-
-console.log(Buffer.from("{\"index\":" + 0 + "}" + "\r\n", "utf-8"));
-
+// fs.unlink(src, function () {
+//     console.log("删除");
+// })
 process.on("exit", function () {
     stream.end();
-    console.log("spend " + Date.now() - t0 + " ms");
+    console.log("spend " + (Date.now() - t0) + " ms");
 });
 
 
