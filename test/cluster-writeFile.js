@@ -12,8 +12,8 @@ var src = "e:/LOGS/out" + pid + ".log";
 
 var t0 = Date.now();
 var w = writer.writer(src);
-t.loop(1000000, function (i) {
-    w.write("{\"index\": " + i + ", \"name\": \"wangqun\"}");
+t.loop(5000000, function (i) {
+    w.write("{\"index\": " + i + "}");
 });
 w.close();
 var codet = Date.now() - t0;
