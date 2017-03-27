@@ -4,20 +4,39 @@
 
 // var os = require("os");
 // console.log(JSON.stringify(os.userInfo()));
-function timer(delay, func) {
-    func(function () {
-        setTimeout(function () {
-            timer(delay, func);
-        }, delay);
-    });
+function timer(func, delay) {
+    var id;
+
+    function d() {
+        clearTimeout(id);
+        func();
+        id = setTimeout(d, delay);
+    }
+
+    return {
+        start: d,
+        stop: function () {
+            clearTimeout(id);
+        }
+    };
 }
 
 var i = 0;
+var t = timer(function () {
+    var str = "";
+    for (var n = 0; n < 10; n++) {
+        str += n;
+    }
+    str = null;
+    console.log(i++)
+}, 0);
+
 try {
-    timer(0, function (done) {
-        console.log(i++);
-        done();
-    });
+    t.start();
 } catch (e) {
     console.log(e);
 }
+
+process.on('exit', function (code) {
+    console.log("About to exit with code:" + code);
+});
