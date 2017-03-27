@@ -4,17 +4,14 @@
 
 
 
-function test() {
-    var d = Date.now();
-    for (var i = 0; i < 3000000; i++) {
-        // var str = i.toString();
-        var str = i + "";
-    }
-    console.log(Date.now() - d);
+var ump = require("../lib/ump_log_writer");
+var t0 = Date.now();
+var f = ump.tp();
+for (var i = 0; i < 1000000; i++) {
+    f.write("zs.jd.com", "123");
 }
-var count = 50;
-var t1 = Date.now();
-for (var i = 0; i < count; i++) {
-    test();
-}
-console.log("end :" + (Date.now() - t1));
+console.log("run :" + (Date.now() - t0) + "ms");
+
+process.on("exit", function () {
+    console.log("end :" + (Date.now() - t0) + "ms");
+});
