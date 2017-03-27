@@ -5,8 +5,8 @@
 
 
 var ump = require("../lib/ump_log_writer");
-var t0 = Date.now();
 var f = ump.tp();
+var t0 = Date.now();
 for (var i = 0; i < 1000000; i++) {
     f.write("zs.jd.com", "123");
 }
