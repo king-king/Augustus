@@ -5,7 +5,7 @@
 
 var t = require("../lib/tool");
 var fs = require("fs");
-var writer = require("../lib/file").writer;
+var writer = require("../lib/file_writer").writer;
 
 var t0 = Date.now();
 // var src = "../logs/" + Date.now() + ".log";

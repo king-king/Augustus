@@ -5,7 +5,7 @@
 
 var t = require("../lib/tool");
 var fs = require("fs");
-var writer = require("../lib/file");
+var writer = require("../lib/file_writer");
 
 var pid = process.pid;
 var src = "e:/LOGS/out" + pid + ".log";
