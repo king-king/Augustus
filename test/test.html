@@ -14,31 +14,27 @@
             /*mask: url(mask.png);*/
         }
 
-        .a {
-            width: 100px;
-            height: 100px;
-            background: #000;
-            float: left;
-        }
-
-        .c {
-            width: 200px;
-            height: 100px;
-            background: #f00;
-            display: table;
-        }
     </style>
 </head>
 <body>
-<div id="target">
-    <div class="a">fd</div>
-    <div class="b">
-        <div class="c"></div>
-    </div>
-</div>
-<script src="jquery-1.10.2.js"></script>
 <script>
+    (function () {
+        function writer() {
+            return {
+                open: function () {
+                    console.log("open")
+                },
+                close: function () {
+                    this.open();
+                }
+            }
+        }
 
+        var w = writer();
+        w.close();
+
+
+    })();
 
 </script>
 </body>
