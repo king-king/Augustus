@@ -28,7 +28,7 @@ app.use(cookieParser());
 var n = 0;
 app.use("/images/", function (req, res, next) {
     // console.log(req.get("Referer"));
-    console.log(process.pid);
+    console.log(req.path);
     next();
 });
 
