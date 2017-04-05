@@ -6,11 +6,11 @@
 var time = require("../lib/time");
 
 var ump = require("../lib/ump_log_writer");
-var f = ump.tp("zs.jd.com", 100000);
+var f = ump.tp();
 var t0 = Date.now();
 var t = time.getUMPtime();
 for (var i = 0; i < 500000; i++) {
-    f.write(i, i + 1);
+    f.write("zs.jd.com", i, i + 1);
 }
 console.log("run :" + (Date.now() - t0) + "ms");
 
