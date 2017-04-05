@@ -7,11 +7,11 @@ var time = require("../lib/time");
 var eol = require("os").EOL;
 
 var ump = require("../lib/ump_log_writer");
-var f = ump.tp();
+var f = ump.tp("zs.jd.com");
 var t0 = Date.now();
 var t = time.getUMPtime();
-for (var i = 0; i < 1000000; i++) {
-    f.write("zs.jd.com", "123", t);
+for (var i = 0; i < 10; i++) {
+    f.write( "123", t);
 }
 console.log("run :" + (Date.now() - t0) + "ms");
 
