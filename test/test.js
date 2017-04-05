@@ -4,7 +4,6 @@
 
 
 var time = require("../lib/time");
-var eol = require("os").EOL;
 
 var ump = require("../lib/ump_log_writer");
 var f = ump.tp("zs.jd.com");
