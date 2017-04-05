@@ -10,7 +10,6 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-// app.listen(3000);
 
 var fd = fs.openSync("./logs/" + process.pid + ".log", "a+");
 fs.closeSync(fd);
