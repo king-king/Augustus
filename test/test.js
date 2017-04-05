@@ -6,19 +6,17 @@
 var time = require("../lib/time");
 
 var ump = require("../lib/ump_log_writer");
-var f = ump.tp("zs.jd.com");
+var f = ump.tp("zs.jd.com", 3500);
 var t0 = Date.now();
 var t = time.getUMPtime();
-for (var i = 0; i < 10; i++) {
-    f.write( "123", t);
+for (var i = 0; i < 5000; i++) {
+    f.write(i, i + 1);
 }
 console.log("run :" + (Date.now() - t0) + "ms");
 
 process.on("exit", function () {
     console.log("end :" + (Date.now() - t0) + "ms");
 });
-
-
 
 
 // var hostname = "wangqun6";
