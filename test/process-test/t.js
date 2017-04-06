@@ -71,12 +71,12 @@ function test() {
     unsolve.push(1);
     var t = Date.now();
     c(task, function () {
+        console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms" + " 平均耗时：" + (Date.now() - t) / num + "ms");
+        unsolve.pop();
         if (unsolve.length) {
             console.log("目前还有" + unsolve.length * num + "项请求服务器没有返回")
         }
-        console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms" + " 平均耗时：" + (Date.now() - t) / num + "ms");
-        unsolve.pop();
-        setTimeout(test, 1000);
+        setTimeout(test, 500);
     });
 }
 test();
