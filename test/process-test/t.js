@@ -57,11 +57,9 @@ var num = 2000;
 
 loop(num, function (i) {
     task.push(function (done) {
-        var t0 = Date.now();
         http.get("http://127.0.0.1/paintTime.jpg?firstPaintTime=" + i +
             "&allPaintTime=" + i + "&time=" + getUMPTime(), function (res) {
             res.resume();
-            spendTimes.push(Date.now() - t0);
             done();
         });
     });
@@ -71,27 +69,10 @@ var unsolve = [];
 setInterval(function () {
     unsolve.push(1);
     var t = Date.now();
-    var spendTimes = [];
     c(task, function () {
         console.log("==================================================");
         console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
-        var avgTime = 0, minTime = spendTimes[0], maxTime = spendTimes[0];
-        spendTimes.forEach(function (time) {
-            avgTime += time;
-            if (minTime > time) {
-                minTime = time;
-            }
-            if (maxTime < time) {
-                maxTime = time
-            }
-        });
-        console.log("最长耗时：" + maxTime + "ms");
-        console.log("最短耗时：" + minTime + "ms");
-        console.log("平均耗时：" + avgTime / num + "ms");
-        spendTimes.sort(function (a, b) {
-            return a - b;
-        });
-        console.log("50%的请求在" + spendTimes[num * 0.5 << 0] + "ms内返回");
+        console.log("平均耗时：" + (Date.now() - t) / num + "ms");
         unsolve.pop();
         console.log(unsolve.length ? "目前还有" + unsolve.length * num + "项请求服务器没有返回" : "目前所有数据都处理完毕");
     });

@@ -9,6 +9,7 @@ var port = 80;
 var file = fs.readFileSync("../public/images/result.jpg");
 var tp = ump.tp();
 var warn = ump.warn();
+console.log("pid：" + process.pid);
 
 function processSearch(search) {
     var result = {};
