@@ -20,12 +20,12 @@ function processSearch(search) {
     }
     return result;
 }
-
+var index = 0;
 var server = http.createServer(function (req, res) {
     var urlObj = url.parse(req.url);
     var pathname = urlObj.pathname;
     var search = urlObj.search;
-    console.log(pathname, search);
+    // console.log(pathname, search);
     switch (pathname) {
         case "/paintTime.jpg":
             /**
@@ -34,6 +34,7 @@ var server = http.createServer(function (req, res) {
              *  /\?firstPaintTime=\d+&allPaintTime=\d+&time=\d{17}$/
              */
             if (( /\?firstPaintTime=\d+&allPaintTime=\d+&time=\d{17}$/).test(search)) {
+                console.log(index++);
                 // 只有search部分匹配了才做进一步的处理
                 var obj = processSearch(search);
                 // 写入白屏数据
