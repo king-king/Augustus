@@ -7,5 +7,8 @@ module.exports = {
     },
     business: {
         maxLineNum: 500000
-    }
+    },
+    firstPaintKey: "com.jd.zs.firstpaint",// 监控白屏时间的key
+    allPaintKey: "com.jd.zs.allpaint"// 监控首屏时间的key
+
 };
