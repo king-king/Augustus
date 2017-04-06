@@ -103,6 +103,7 @@ loop(num, function (i) {
 // console.log("发送请求用时：" + (Date.now() - t) + "ms");
 
 setImmediate(function () {
+    var t = Date.now();
     c(task, function () {
         console.log("==================================================");
         console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
