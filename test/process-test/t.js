@@ -53,7 +53,7 @@ function loop(n, func) {
     }
 }
 var task = [];
-var num = 5000;
+var num = 2000;
 var spendTimes = [];
 
 loop(num, function (i) {
@@ -79,25 +79,49 @@ loop(num, function (i) {
 });
 
 
-var t = Date.now();
-c(task, function () {
-    console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
-    var avgTime = 0, minTime = spendTimes[0], maxTime = spendTimes[0];
-    spendTimes.forEach(function (time) {
-        avgTime += time;
-        if (minTime > time) {
-            minTime = time;
-        }
-        if (maxTime < time) {
-            maxTime = time
-        }
+// var t = Date.now();
+// c(task, function () {
+//     console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
+//     var avgTime = 0, minTime = spendTimes[0], maxTime = spendTimes[0];
+//     spendTimes.forEach(function (time) {
+//         avgTime += time;
+//         if (minTime > time) {
+//             minTime = time;
+//         }
+//         if (maxTime < time) {
+//             maxTime = time
+//         }
+//     });
+//     console.log("最长耗时：" + maxTime + "ms");
+//     console.log("最短耗时：" + minTime + "ms");
+//     console.log("平均耗时：" + avgTime / num + "ms");
+//     spendTimes.sort(function (a, b) {
+//         return a - b;
+//     });
+//     console.log("50%的请求在" + spendTimes[num * 0.5 << 0] + "ms内返回");
+// });
+// console.log("发送请求用时：" + (Date.now() - t) + "ms");
+
+setImmediate(function () {
+    c(task, function () {
+        console.log("==================================================")
+        console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
+        var avgTime = 0, minTime = spendTimes[0], maxTime = spendTimes[0];
+        spendTimes.forEach(function (time) {
+            avgTime += time;
+            if (minTime > time) {
+                minTime = time;
+            }
+            if (maxTime < time) {
+                maxTime = time
+            }
+        });
+        console.log("最长耗时：" + maxTime + "ms");
+        console.log("最短耗时：" + minTime + "ms");
+        console.log("平均耗时：" + avgTime / num + "ms");
+        spendTimes.sort(function (a, b) {
+            return a - b;
+        });
+        console.log("50%的请求在" + spendTimes[num * 0.5 << 0] + "ms内返回");
     });
-    console.log("最长耗时：" + maxTime + "ms");
-    console.log("最短耗时：" + minTime + "ms");
-    console.log("平均耗时：" + avgTime / num + "ms");
-    spendTimes.sort(function (a, b) {
-        return a - b;
-    });
-    console.log("50%的请求在" + spendTimes[num * 0.5 << 0] + "ms内返回");
-});
-console.log("发送请求用时：" + (Date.now() - t) + "ms");
+}, 1000);
