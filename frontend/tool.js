@@ -45,7 +45,7 @@ var log = {
     // /?url={ajax-url}&time=yyyyMMddHHmmssSSS&detail={detail}
     ajax: function (url, detail) {
         var img = new Image();
-        img.src = "http://127.0.0.1/paintTime.jpg?url=" + encodeURIComponent(url) +
+        img.src = "http://127.0.0.1/ajax_warn.jpg?url=" + encodeURIComponent(url) +
             "&time=" + getUMPTime() + "&detail=" + encodeURIComponent(detail);
     }
 };
