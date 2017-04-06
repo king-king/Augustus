@@ -12,11 +12,11 @@ var warn = ump.warn();
 
 function processSearch(search) {
     var result = {};
-    var arr = decodeURIComponent(search).slice(1).split("&");
+    var arr = search.slice(1).split("&");
     var len = arr.length;
     for (var i = 0; i < len; i++) {
         var item = arr[i].split("=");
-        result[item[0]] = item[1];
+        result[item[0]] = decodeURIComponent(item[1]);
     }
     return result;
 }
@@ -27,7 +27,7 @@ var server = http.createServer(function (req, res) {
     var search = urlObj.search;
     console.log(pathname, search);
     switch (pathname) {
-        case "/tp.jpg":
+        case "/paintTime.jpg":
             /**
              *  记录白屏和首屏时间url的格式是：
              *  /tp.jpg?firstPaintTime=32132&allPaintTime=43243&time=yyyyMMddHHmmssSSS

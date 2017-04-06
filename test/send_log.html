@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试</title>
+    <style>
+        .button {
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            border: 1px solid #aaa;
+            color: #555;
+            user-select: none;
+            border-radius: 2px;
+            position: relative;
+            margin: 20px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="button time">记录时间</div>
+<div class="button ajax">记录ajax</div>
+<script src="../frontend/tool.js"></script>
+<script>
+    (function () {
+        var timeBtn = document.querySelector(".time");
+        var ajaxBtn = document.querySelector(".ajax");
+        var timeCount = 0;
+        timeBtn.onclick = function () {
+            log.time(timeCount, timeCount);
+            timeCount++;
+        };
+        ajaxBtn.onclick = function () {
+            log.ajax(location.pathname, "无数据");
+        };
+    })();
+</script>
+</body>
+</html>
