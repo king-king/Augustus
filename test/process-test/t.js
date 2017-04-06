@@ -104,7 +104,7 @@ loop(num, function (i) {
 
 setImmediate(function () {
     c(task, function () {
-        console.log("==================================================")
+        console.log("==================================================");
         console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
         var avgTime = 0, minTime = spendTimes[0], maxTime = spendTimes[0];
         spendTimes.forEach(function (time) {
