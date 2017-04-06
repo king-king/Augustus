@@ -54,7 +54,6 @@ function loop(n, func) {
 }
 var task = [];
 var num = 2000;
-var spendTimes = [];
 
 loop(num, function (i) {
     task.push(function (done) {
@@ -65,45 +64,14 @@ loop(num, function (i) {
             spendTimes.push(Date.now() - t0);
             done();
         });
-        // http.request({
-        //     hostname: '127.0.0.1',
-        //     path: "/paintTime.jpg?firstPaintTime=" + i +
-        //     "&allPaintTime=" + i + "&time=" + getUMPTime(),
-        //     method: 'GET'
-        // }, function () {
-        //     console.log("ok");
-        //     spendTimes.push(Date.now() - t0);
-        //     done();
-        // });
     });
 });
 
-
-// var t = Date.now();
-// c(task, function () {
-//     console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
-//     var avgTime = 0, minTime = spendTimes[0], maxTime = spendTimes[0];
-//     spendTimes.forEach(function (time) {
-//         avgTime += time;
-//         if (minTime > time) {
-//             minTime = time;
-//         }
-//         if (maxTime < time) {
-//             maxTime = time
-//         }
-//     });
-//     console.log("最长耗时：" + maxTime + "ms");
-//     console.log("最短耗时：" + minTime + "ms");
-//     console.log("平均耗时：" + avgTime / num + "ms");
-//     spendTimes.sort(function (a, b) {
-//         return a - b;
-//     });
-//     console.log("50%的请求在" + spendTimes[num * 0.5 << 0] + "ms内返回");
-// });
-// console.log("发送请求用时：" + (Date.now() - t) + "ms");
-
+var unsolve = [];
 setInterval(function () {
+    unsolve.push(1);
     var t = Date.now();
+    var spendTimes = [];
     c(task, function () {
         console.log("==================================================");
         console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
@@ -124,5 +92,7 @@ setInterval(function () {
             return a - b;
         });
         console.log("50%的请求在" + spendTimes[num * 0.5 << 0] + "ms内返回");
+        unsolve.pop();
+        console.log(unsolve.length ? "目前还有" + unsolve.length * num + "项请求服务器没有返回" : "目前所有数据都处理完毕");
     });
-}, 1000);
+}, 2000);
