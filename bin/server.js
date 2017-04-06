@@ -42,7 +42,15 @@ var server = http.createServer(function (req, res) {
                 tp.write(umpConfig.allPaintKey, obj.allPaintTime, obj.time);
             }
             break;
-        case "/warn.jpg":
+        case "/ajax_warn.jpg":
+            /**
+             * 记录ajax出错的url格式：
+             * /?url={ajax-url}&time=yyyyMMddHHmmssSSS&detail={detail}
+             * */
+            var searchObj = processSearch(search);
+            if (searchObj.url && searchObj.time && searchObj.detail) {
+                warn.write(umpConfig.ajaxWarnKey, "url:" + searchObj.url + ";detail:" + searchObj.detail, searchObj.time);
+            }
             break;
     }
     res.statusCode = 200;

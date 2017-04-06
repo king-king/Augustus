@@ -10,5 +10,5 @@ module.exports = {
     },
     firstPaintKey: "com.jd.zs.frontend.firstpaint",// 监控白屏时间的key
     allPaintKey: "com.jd.zs.frontend.allpaint",// 监控首屏时间的key
-    warnKey: "com.jd.zs.frontend.warn"// 记录ajax自定义报警的key
+    ajaxWarnKey: "com.jd.zs.frontend.warn"// 记录ajax自定义报警的key
 };
