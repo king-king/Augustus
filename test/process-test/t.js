@@ -53,7 +53,7 @@ function loop(n, func) {
     }
 }
 var task = [];
-var num = 2000;
+var num = 400;
 
 loop(num, function (i) {
     task.push(function (done) {
@@ -66,14 +66,17 @@ loop(num, function (i) {
 });
 
 var unsolve = [];
-setInterval(function () {
+
+function test() {
     unsolve.push(1);
     var t = Date.now();
     c(task, function () {
-        console.log("==================================================");
-        console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms");
-        console.log("平均耗时：" + (Date.now() - t) / num + "ms");
+        if (unsolve.length) {
+            console.log("目前还有" + unsolve.length * num + "项请求服务器没有返回")
+        }
+        console.log("个请求全部执行完毕共耗时：" + (Date.now() - t) + "ms" + " 平均耗时：" + (Date.now() - t) / num + "ms");
         unsolve.pop();
-        console.log(unsolve.length ? "目前还有" + unsolve.length * num + "项请求服务器没有返回" : "目前所有数据都处理完毕");
+        setTimeout(test, 1000);
     });
-}, 2000);
+}
+test();
