@@ -102,7 +102,7 @@ loop(num, function (i) {
 // });
 // console.log("发送请求用时：" + (Date.now() - t) + "ms");
 
-setImmediate(function () {
+setInterval(function () {
     var t = Date.now();
     c(task, function () {
         console.log("==================================================");
