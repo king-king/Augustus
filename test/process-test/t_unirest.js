@@ -55,7 +55,7 @@ function loop(n, func) {
     }
 }
 var task = [];
-var num = 5000;
+var num = 10000;
 
 loop(num, function (i) {
     task.push(function (done) {

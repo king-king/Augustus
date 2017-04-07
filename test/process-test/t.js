@@ -59,14 +59,12 @@ loop(num, function (i) {
     task.push(function (done) {
         http.get("http://127.0.0.1/paintTime.jpg?firstPaintTime=" + i +
             "&allPaintTime=" + i + "&time=" + getUMPTime(), function (res) {
-            res.resume();
-            done();
-        }).setTimeout(5000, function () {
-            console.log("超时")
-        }).end(function (err) {
-            if (err) {
-                console.log(err)
-            }
+            res.on("data", function () {
+
+            });
+            res.on("end", function () {
+                done();
+            });
         });
     });
 });
