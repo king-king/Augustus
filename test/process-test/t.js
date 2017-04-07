@@ -53,7 +53,7 @@ function loop(n, func) {
     }
 }
 var task = [];
-var num = 400;
+var num = 1000;
 
 loop(num, function (i) {
     task.push(function (done) {

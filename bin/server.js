@@ -31,7 +31,7 @@ var server = http.createServer(function (req, res) {
         case "/paintTime.jpg":
             /**
              *  记录白屏和首屏时间url的格式是：
-             *  /tp.jpg?firstPaintTime=32132&allPaintTime=43243&time=yyyyMMddHHmmssSSS
+             *  /paintTime.jpg?firstPaintTime=32132&allPaintTime=43243&time=yyyyMMddHHmmssSSS
              *  /\?firstPaintTime=\d+&allPaintTime=\d+&time=\d{17}$/
              */
             if (( /\?firstPaintTime=\d+&allPaintTime=\d+&time=\d{17}$/).test(search)) {
