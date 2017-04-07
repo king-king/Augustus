@@ -53,7 +53,7 @@ function loop(n, func) {
     }
 }
 var task = [];
-var num = 1000;
+var num = 2000;
 
 loop(num, function (i) {
     task.push(function (done) {
@@ -76,7 +76,8 @@ function test() {
         if (unsolve.length) {
             console.log("目前还有" + unsolve.length * num + "项请求服务器没有返回")
         }
-        setTimeout(test, 500);
+        test();
+        // setTimeout(test, 500);
     });
 }
 test();
