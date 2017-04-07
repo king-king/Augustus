@@ -53,7 +53,7 @@ function loop(n, func) {
     }
 }
 var task = [];
-var num = 2000;
+var num = 5000;
 
 loop(num, function (i) {
     task.push(function (done) {
@@ -61,6 +61,12 @@ loop(num, function (i) {
             "&allPaintTime=" + i + "&time=" + getUMPTime(), function (res) {
             res.resume();
             done();
+        }).setTimeout(5000, function () {
+            console.log("超时")
+        }).end(function (err) {
+            if (err) {
+                console.log(err)
+            }
         });
     });
 });
@@ -81,3 +87,10 @@ function test() {
     });
 }
 test();
+
+var errindex = 1;
+process.on('uncaughtException', function (err) {
+    console.log("========================");
+    console.log(errindex++);
+    console.log(err);
+});
