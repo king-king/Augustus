@@ -21,7 +21,7 @@ function processSearch(search) {
     }
     return result;
 }
-var index = 0;
+var index = 1;
 var server = http.createServer(function (req, res) {
     var urlObj = url.parse(req.url);
     var pathname = urlObj.pathname;
