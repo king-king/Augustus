@@ -1,0 +1,358 @@
+/**
+ * huiyan
+ */
+* {
+    padding: 0;
+    margin: 0
+}
+
+body {
+    background-color: #f4f4f4;
+    font-family: "Microsoft YaHei", sans-serif
+}
+
+.normal-body, body, html {
+    width: 100%;
+    height: 100%;
+    position: absolute
+}
+
+.advance .normal-body, body.advance {
+    overflow: hidden
+}
+
+.login-wrapper {
+    height: 100%;
+    transition: .6s ease-in-out
+}
+
+.page-border {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: relative
+}
+
+.advance .login-dummy-page {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%)
+}
+
+.login-dummy-page, .page-index {
+    height: 100%;
+    width: 100%;
+    position: absolute
+}
+
+.page-border.a {
+    background: url(../img/login/login-page-bg-0-12807d045c.jpg) center center no-repeat;
+    background-size: cover
+}
+
+.page-border.b {
+    background: url(../img/login/login-page-bg-1-53c4c57619.jpg) center center no-repeat;
+    background-size: cover
+}
+
+.page-border.c {
+    background: url(../img/login/login-page-bg-2-d26d048d37.jpg) center center no-repeat;
+    background-size: cover
+}
+
+.page-index {
+    height: 73px;
+    width: 12px;
+    top: 35%;
+    left: 30px;
+    z-index: 10
+}
+
+.page-index .page-index-circle {
+    width: 12px;
+    height: 12px;
+    margin-bottom: 17px;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    border-radius: 12px;
+    cursor: pointer
+}
+
+.page-index .page-index-circle.select {
+    border: 3px solid #fff
+}
+
+.header, .title-border {
+    height: 180px;
+    position: absolute;
+    top: 22.854%;
+    width: 100%
+}
+
+.login-dummy-page .page-title0 {
+    margin: auto;
+    height: 66px;
+    display: block
+}
+
+.login-dummy-page.page-in .page-title0 {
+    animation: a-page-in .6s ease-in-out both
+}
+
+.login-dummy-page.page-out .page-title0 {
+    animation: a-page-out .6s ease-in-out both
+}
+
+.login-dummy-page .page-title1 {
+    height: 72px;
+    display: block;
+    margin: 40px auto auto
+}
+
+.login-dummy-page.page-in .page-title1 {
+    animation: a-page-in .6s ease-in-out .2s both
+}
+
+.login-dummy-page.page-out .page-title1 {
+    animation: a-page-out .6s ease-in-out .2s both
+}
+
+.header {
+    position: fixed;
+    top: 20px;
+    height: 47px;
+    z-index: 10
+}
+
+.logo {
+    position: absolute;
+    height: 100%;
+    left: 97px
+}
+
+.login-btn {
+    cursor: pointer;
+    width: 70px;
+    border-radius: 35px;
+    border: 1px solid #fff;
+    color: #fff;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    position: absolute;
+    right: 98px;
+    top: 10px;
+    font-size: 16px;
+    font-weight: initial;
+    font-family: "Microsoft Yahei", sans-serif
+}
+
+@keyframes a-page-in {
+    0% {
+        opacity: 0;
+        transform: translateY(40px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+
+@keyframes a-page-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0)
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-40px)
+    }
+}
+
+@keyframes shade-in {
+    0%, to {
+        opacity: 1;
+        transform: scale(1)
+    }
+    50% {
+        opacity: 0;
+        transform: scale(1.2)
+    }
+}
+
+@keyframes a-rotate {
+    0% {
+        transform: rotateZ(0deg)
+    }
+    50% {
+        transform: rotateZ(180deg)
+    }
+    to {
+        transform: rotateZ(360deg)
+    }
+}
+
+.page0-arrow, .page0-circle {
+    position: absolute;
+    height: 3.111%
+}
+
+.page0-arrow {
+    cursor: pointer;
+    width: 82px;
+    height: 65px;
+    left: 50%;
+    margin-left: -41px;
+    bottom: 45px;
+    animation: up-down 2s linear both infinite
+}
+
+@keyframes up-down {
+    0% {
+        transform: translate(0) scaleX(1)
+    }
+    50% {
+        transform: translateY(15px) scaleX(.9)
+    }
+    to {
+        transform: translateY(0) scaleX(1)
+    }
+}
+
+.page2-circle {
+    position: absolute;
+    height: 6.223%
+}
+
+.page1-circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0
+}
+
+.page1-circle.a {
+    height: 3.648%
+}
+
+.page1-circle.b, .page1-circle.c {
+    height: 3.862%
+}
+
+.page1-circle.d {
+    height: 6.9742489%
+}
+
+.page1-circle.e {
+    height: 4.2918%
+}
+
+.hide {
+    display: none !important
+}
+
+.need-update .update-header {
+    height: 72px;
+    background: #fff url(../img/login/update-top-border-012180ad06.png) repeat-x left top
+}
+
+.need-update .content {
+    position: absolute;
+    top: 92px;
+    left: 50%;
+    margin-left: -600px;
+    width: 1200px;
+    height: 545px;
+    background-color: #fff
+}
+
+.need-update .description {
+    padding-top: 78px;
+    height: 73px;
+    text-align: center
+}
+
+.need-update .update-logo1 {
+    height: 100%;
+    margin-left: 393px;
+    margin-right: 10px;
+    float: left
+}
+
+.need-update .description-text {
+    float: left;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+    margin-top: 24px
+}
+
+.need-update .browser {
+    width: 272px;
+    height: 190px;
+    margin: 65px auto 0
+}
+
+.need-update .chrome {
+    width: 98px;
+    float: left
+}
+
+.need-update .firefox {
+    width: 105px;
+    float: right
+}
+
+.need-update .update-chrome, .need-update .update-firefox {
+    width: 100%
+}
+
+.need-update .browser a {
+    text-decoration: none;
+    background: #d52417;
+    color: #fff;
+    width: 55px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    display: block;
+    text-align: center;
+    margin-left: 24px
+}
+
+.need-update .browser .firefox a {
+    margin-left: 25px
+}
+
+.need-update .update-logo0 {
+    margin-left: 95px;
+    margin-top: 20px
+}
+
+.ui-mask {
+    opacity: .7 !important
+}
+
+.login-page.filter .normal-body {
+    filter: blur(5px)
+}
+
+.go-on-wrap {
+    margin-top: 30px;
+    text-align: center
+}
+
+.go-on-wrap .go-on-btn {
+    font-size: 15px;
+    cursor: pointer;
+    padding: 5px 10px;
+    color: #ff3040;
+    border: 1px solid #ff3040
+}
+
+.warning-wrap {
+    text-align: center;
+    width: 700px;
+    margin: 23px auto 0;
+    color: #919191
+}
